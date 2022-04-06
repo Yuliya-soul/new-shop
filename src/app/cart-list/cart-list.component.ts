@@ -12,10 +12,10 @@ export class CartListComponent implements OnInit {
   public books: Array<IBook> = [book1, book2];
   condition: boolean = true;
   ngOnInit(): void {}
-  toggle() {
-    this.cartService.toggle();
+  toggle(): void {
+    this.condition = this.cartService.toggle();
   }
   trackByBooks(index: number, item: IBook): number {
-    return     item.id;
+    return item.id;
   }
 }
