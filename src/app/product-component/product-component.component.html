@@ -1,3 +1,5 @@
 <p>product-component works!</p>
-<app-product-list-component></app-product-list-component>
 <button (click)="onAddToCart()">Buy</button>
+<ol>
+  <li *ngFor="let item of books">{{ item | json }}</li>
+</ol>

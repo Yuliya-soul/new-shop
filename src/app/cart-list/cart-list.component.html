@@ -1,0 +1,8 @@
+<p>cart-list works!</p>
+<p *ngIf="condition">Product exist</p>
+<p *ngIf="!condition">Product doesn't exist</p>
+<button (click)="toggle()">Toggle</button>
+<div *ngFor="let item of books; trackBy: trackByBooks">
+  ({{ item.id }}) -{{ item.name }} -{{ item.isAvailable }}
+</div>
+<button (click)="onAddToCart()">Buy</button>
