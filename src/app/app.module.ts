@@ -7,10 +7,11 @@ import { ProductListComponent } from './product-list/product-list.component';
 
 import { CartModule } from './cart-list/cart.module';
 import { ProductsModule } from './product/product.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent, ProductListComponent],
-  imports: [BrowserModule, CartModule, ProductsModule],
+  imports: [BrowserModule, CartModule, ProductsModule, BrowserAnimationsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
