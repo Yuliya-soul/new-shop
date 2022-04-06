@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { book1, book2, IBook } from '../product/product.model';
+import { Subscription } from 'rxjs';
+import { IBook } from '../product/product.model';
 import { CartService } from './cart.service';
 
 @Component({
@@ -9,9 +10,31 @@ import { CartService } from './cart.service';
 })
 export class CartListComponent implements OnInit {
   constructor(public cartService: CartService) {}
-  public books: Array<IBook> = [book1, book2];
+  public books: Array<IBook> = [];
+  private sub!: Subscription;
+  input!: IBook;
   condition: boolean = true;
-  ngOnInit(): void {}
+  totalQuantity = 0;
+  totalCost = 0;
+
+  ngOnInit(): void {
+    this.sub = this.cartService.channel$.subscribe((data: IBook) => {
+      this.input = data;
+      if (this.books.includes(this.input)) {
+        let indexOfOrderedBook = this.books.indexOf(this.input);
+        this.books[indexOfOrderedBook].quantity++;
+      } else {
+        this.books.push(this.input);
+        let indexOfOrderedBook = this.books.indexOf(this.input);
+        this.books[indexOfOrderedBook].quantity++;
+      }
+      this.totalQuantity++;
+      this.totalCost = this.totalCost + this.input.price;
+    });
+  }
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
+  }
   toggle(): void {
     this.condition = this.cartService.toggle();
   }

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { CartService } from '../cart-list/cart.service';
 import { IBook } from './product.model';
 import { ProductService } from './product.service';
 
@@ -12,7 +13,10 @@ export class ProductComponent implements OnInit {
   books: IBook[] = [];
   list: IBook[] = [];
 
-  constructor(private dataService: ProductService) {}
+  constructor(
+    private dataService: ProductService,
+    public cartService: CartService
+  ) {}
 
   addItem(name: IBook) {
     this.dataService.addProducts(name);
@@ -22,7 +26,6 @@ export class ProductComponent implements OnInit {
   }
 
   onAddToCart(item: IBook) {
-    this.list.push(item);
-    console.log('add item to list', this.list);
+    this.list.push(this.cartService.publishData(item));
   }
 }

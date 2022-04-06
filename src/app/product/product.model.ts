@@ -8,10 +8,11 @@ export interface IBook {
   id: number;
   name?: string;
   description?: string;
-  price?: number;
+  price: number;
   category?: FileAccess;
   img?: string;
   isAvailable?: boolean;
+  quantity:number;
 }
 export const book1: IBook = {
   id: 1,
@@ -20,7 +21,8 @@ export const book1: IBook = {
   price: 14.32,
   category: FileAccess.selfDevelopment,
  // img: 'https://cdn1.ozone.ru/s3/multimedia-x/wc1200/6096623277.jpg',
-  isAvailable: false,
+  isAvailable: true,
+  quantity:0
 };
 export const book2: IBook = {
   id: 2,
@@ -35,4 +37,5 @@ export const book2: IBook = {
   category: FileAccess.selfDevelopment,
   //img: 'https://cdn1.ozone.ru/s3/multimedia-n/wc1200/6280576967.jpg',
   isAvailable: true,
+  quantity:0
 };

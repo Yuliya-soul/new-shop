@@ -1,9 +1,13 @@
-List of products added to buckets
-<button mat-button (click)="toggle()">Toggle</button>
+List of products added to buckets<br />
+
+<button mat-button (click)="toggle()">Info</button>
 <div *ngIf="condition">
   <div *ngFor="let item of books; trackBy: trackByBooks">
-    ({{ item.id }}) -{{ item.name }} -{{ item.isAvailable }}
+    ({{ item.id }}) -{{ item.name }} -{{ item.quantity }}
   </div>
 </div>
 
-<div *ngIf="!condition">Product doesn't exist</div>
+<div *ngIf="!condition">
+  Total quantity:{{ totalQuantity }}<br />
+  Total cost:{{ totalCost | number: "1.0-2" }}
+</div>
