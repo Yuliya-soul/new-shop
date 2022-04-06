@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IBook } from '../first-component/first-component.models';
-import { book1, book2 } from '../product-component/product.model';
+import { book1, book2 } from '../product/product.model';
 
 @Component({
   selector: 'app-cart-list',

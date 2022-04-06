@@ -3,12 +3,12 @@ import { IBook } from './product.model';
 import { ProductService } from './product.service';
 
 @Component({
-  selector: 'app-product-component',
-  templateUrl: './product-component.component.html',
-  styleUrls: ['./product-component.component.css'],
+  selector: 'app-product',
+  templateUrl: './product.component.html',
+  styleUrls: ['./product.component.css'],
   providers: [ProductService],
 })
-export class ProductComponentComponent implements OnInit {
+export class ProductComponent implements OnInit {
   books: IBook[] = [];
   constructor(private dataService: ProductService) {}
 
