@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { book1, book2,  IBook } from './product.model';
+import { book1, book2, IBook } from './product.model';
 
 @Injectable()
 export class ProductService {

@@ -16,7 +16,7 @@
       </mat-card-content>
       <mat-card-actions>
         <button mat-button>INFO</button>
-        <button mat-button (click)="onAddToCart(item)" disabled="{{item.isAvailable}}">BUY</button>
+        <button mat-button (click)="onAddToCart(item)" disabled="{{!item.isAvailable}}">BUY</button>
       </mat-card-actions>
     </mat-card>
   </li>
