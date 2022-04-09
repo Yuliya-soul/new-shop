@@ -1,13 +1,17 @@
-List of products added to buckets<br />
+<b>List of products added to buckets</b><br />
 
-<button mat-button (click)="toggle()">Info</button>
+<button mat-button (click)="toggle()">TOTAL</button>
 <div *ngIf="condition">
   <div *ngFor="let item of books; trackBy: trackByBooks">
     ({{ item.id }}) -{{ item.name }} -{{ item.quantity }}
+    <app-cart-item
+      (onChanged)="onChanged($event, item)"
+      (onDeleted)="onDeleted(item)"
+    ></app-cart-item>
   </div>
 </div>
 
 <div *ngIf="!condition">
-  Total quantity:{{ totalQuantity }}<br />
-  Total cost:{{ totalCost | number: "1.0-2" }}
+  Quantity:{{ totalQuantity }}<br />
+  Cost:{{ totalCost | number: "1.0-2" }}
 </div>

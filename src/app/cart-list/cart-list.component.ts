@@ -41,4 +41,32 @@ export class CartListComponent implements OnInit {
   trackByBooks(index: number, item: IBook): number {
     return item.id;
   }
+
+  onChanged(increased: boolean, item: IBook) {
+    if (this.books.includes(item)) {
+      let indexOfSelectedBook = this.books.indexOf(item);
+      if (increased == true) {
+        this.books[indexOfSelectedBook].quantity++;
+        this.totalQuantity++;
+        this.totalCost = this.totalCost + item.price;
+      } else {
+        if (this.books[indexOfSelectedBook].quantity != 0) {
+          this.books[indexOfSelectedBook].quantity--;
+          this.totalQuantity--;
+          this.totalCost = this.totalCost - item.price;
+        }
+        if (this.books[indexOfSelectedBook].quantity === 0) {
+          this.books.splice(indexOfSelectedBook, 1);
+          this.totalQuantity = this.totalQuantity - item.quantity;
+        }
+      }
+    }
+  }
+  onDeleted(item: IBook) {
+    let indexOfSelectedBook = this.books.indexOf(item);
+    this.totalQuantity = this.totalQuantity - item.quantity;
+    this.totalCost = this.totalCost - item.price * item.quantity;
+    this.books[indexOfSelectedBook].quantity = 0;
+    this.books.splice(indexOfSelectedBook, 1);
+  }
 }
