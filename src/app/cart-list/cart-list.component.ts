@@ -16,6 +16,8 @@ export class CartListComponent implements OnInit {
   condition: boolean = true;
   totalQuantity = 0;
   totalCost = 0;
+  isVerdana = true;
+  isNavy = true;
 
   ngOnInit(): void {
     this.sub = this.cartService.channel$.subscribe((data: IBook) => {
@@ -69,4 +71,9 @@ export class CartListComponent implements OnInit {
     this.books[indexOfSelectedBook].quantity = 0;
     this.books.splice(indexOfSelectedBook, 1);
   }
+
+  currentClasses = {
+    verdanaFont: this.isVerdana,
+    navyColor: this.isNavy,
+  };
 }
