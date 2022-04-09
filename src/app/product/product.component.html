@@ -20,7 +20,7 @@
         <p>{{ item.description | slice: 0:200 }}...</p>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-button>INFO</button>
+        <button mat-button (click)="addDescription(item)">INFO</button>
         <button
           mat-button
           (click)="onAddToCart(item)"

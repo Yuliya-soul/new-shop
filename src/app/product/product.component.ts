@@ -28,4 +28,7 @@ export class ProductComponent implements OnInit {
   onAddToCart(item: IBook) {
     this.list.push(this.cartService.publishData(item));
   }
+  addDescription(data: IBook) {
+    alert(data.description);
+  }
 }
