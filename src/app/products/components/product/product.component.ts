@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { CartService } from '../cart-list/cart.service';
-import { IBook } from './product.model';
-import { ProductService } from './product.service';
+import { CartService } from '../../../cart/services/cart.service';
+import { IBook } from '../../models/product.model';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-product',
@@ -18,17 +18,19 @@ export class ProductComponent implements OnInit {
     public cartService: CartService
   ) {}
 
-  addItem(name: IBook) {
-    this.dataService.addProducts(name);
-  }
-  ngOnInit() {
+  ngOnInit(): void {
     this.books = this.dataService.getProducts();
   }
 
-  onAddToCart(item: IBook) {
+  addItem(name: IBook): void {
+    this.dataService.addProducts(name);
+  }
+
+  onAddToCart(item: IBook): void {
     this.list.push(this.cartService.publishData(item));
   }
-  addDescription(data: IBook) {
+
+  addDescription(data: IBook): void {
     alert(data.description);
   }
 }

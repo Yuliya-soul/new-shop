@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { HighlightDirective } from './highlight.directive';
+import { HighlightDirective } from './directives/highlight.directive';
 
 
 @NgModule({

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { IBook } from '../product/product.model';
-import { CartService } from './cart.service';
+import { IBook } from '../../../products/models/product.model';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-cart-list',
@@ -18,6 +18,11 @@ export class CartListComponent implements OnInit {
   totalCost = 0;
   isVerdana = true;
   isNavy = true;
+
+  currentClasses = {
+    verdanaFont: this.isVerdana,
+    navyColor: this.isNavy,
+  };
 
   ngOnInit(): void {
     this.sub = this.cartService.channel$.subscribe((data: IBook) => {
@@ -72,8 +77,5 @@ export class CartListComponent implements OnInit {
     this.books.splice(indexOfSelectedBook, 1);
   }
 
-  currentClasses = {
-    verdanaFont: this.isVerdana,
-    navyColor: this.isNavy,
-  };
+
 }
