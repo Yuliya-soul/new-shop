@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { IBook } from '../product/product.model';
+import { IBook } from '../../products/models/product.model';
 
 @Injectable()
 export class CartService {
@@ -11,7 +11,8 @@ export class CartService {
   publishData(data: any): any {
     return this.channel.next(data);
   }
-  toggle() {
+
+  toggle(): boolean {
     return (this.condition = !this.condition);
   }
 }
