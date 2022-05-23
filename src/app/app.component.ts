@@ -7,12 +7,15 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 })
 export class AppComponent {
   title = 'new-shop';
+
   @ViewChild('appTitle', { static: false })
   nameParagraph!: ElementRef;
-  ngAfterViewInit() {
+
+  ngAfterViewInit(): void {
     this.change();
   }
-  change() {
+
+  private change(): void {
     if (this.nameParagraph !== undefined) {
       this.nameParagraph.nativeElement.textContent = 'Welcome to our shop ';
     }
