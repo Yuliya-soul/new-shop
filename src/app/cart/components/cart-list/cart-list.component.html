@@ -1,10 +1,10 @@
 <div [ngClass]="currentClasses">PRODUCTS IN BUCKET</div>
 <br />
-
 <button mat-button (click)="toggle()">TOTAL</button>
+
 <div *ngIf="condition">
   <div *ngFor="let item of books; trackBy: trackByBooks" appHighlight>
-    {{ item.name }}  - <b>{{ item.quantity }}</b>
+    {{ item.name }} - <b>{{ item.quantity }}</b>
     <app-cart-item
       (onChanged)="onChanged($event, item)"
       (onDeleted)="onDeleted(item)"
