@@ -12,6 +12,7 @@ export class CartService {
   public booksInBucket: Array<IBook> = [];
   public totalCost = 0;
   totalQuantity = 0;
+  emptinessBooks: boolean = false;
 
   public publishData(data: any): any {
     return this.channel.next(data);
@@ -58,12 +59,10 @@ export class CartService {
   }
 
   private increaseQuantity(input: IBook): void {
-    let indexOfOrderedBook = this.booksInBucket.indexOf(this.input);
-    this.booksInBucket[indexOfOrderedBook].quantity++;
+    this.booksInBucket[this.booksInBucket.indexOf(input)].quantity++;
   }
   private decreaseQuantity(input: IBook): void {
-    let indexOfOrderedBook = this.booksInBucket.indexOf(this.input);
-    this.booksInBucket[indexOfOrderedBook].quantity--;
+    this.booksInBucket[this.booksInBucket.indexOf(input)].quantity--;
   }
   public removeProduct(item: IBook) {
     let indexOfSelectedBook = this.booksInBucket.indexOf(item);
@@ -71,5 +70,12 @@ export class CartService {
     this.totalCost = this.totalCost - item.price * item.quantity;
     this.booksInBucket[indexOfSelectedBook].quantity = 0;
     this.booksInBucket.splice(indexOfSelectedBook, 1);
+  }
+  public isEmptyCart(): boolean {
+    if (this.booksInBucket.length !== 0) {
+      return (this.emptinessBooks = true);
+    } else {
+      return (this.emptinessBooks = false);
+    }
   }
 }

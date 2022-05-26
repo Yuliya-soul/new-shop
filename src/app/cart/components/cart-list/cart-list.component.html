@@ -1,7 +1,7 @@
 <div [ngClass]="currentClasses">PRODUCTS IN BUCKET</div>
 <br />
 <button mat-button (click)="toggle()">TOTAL</button>
-
+<button mat-button (click)=" removeAllProducts()">DELETE ALL</button>
 <div *ngIf="condition">
   <div *ngFor="let item of books; trackBy: trackByBooks" appHighlight>
     {{ item.name }} - <b>{{ item.quantity }}</b>
