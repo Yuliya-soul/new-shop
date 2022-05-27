@@ -11,4 +11,7 @@ export class GeneratorService {
 
     return text;
   }
+  getNewID() {
+    return genID().next().value;
+  }
 }
