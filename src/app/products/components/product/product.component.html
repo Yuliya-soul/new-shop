@@ -1,3 +1,9 @@
+<button mat-button (click)="isEmptyCart()">
+  Show selected books in the bucket
+</button>
+<div *ngIf="toggleEmptinessBooks">
+  You selected {{ this.booksInBucket.length }} types of books
+</div>
 <ul style="display: flex">
   <li *ngFor="let item of books">
     <mat-card class="example-card" style="max-width: 400px">

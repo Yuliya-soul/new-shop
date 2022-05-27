@@ -11,7 +11,9 @@ import { ProductService } from '../../services/product.service';
 })
 export class ProductComponent implements OnInit {
   books: IBook[] = [];
-  list: IBook[] = [];
+  emptinessBooks!: boolean;
+  booksInBucket: IBook[] = [];
+  toggleEmptinessBooks!: boolean;
 
   constructor(
     private dataService: ProductService,
@@ -20,6 +22,8 @@ export class ProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.books = this.dataService.getProducts();
+    this.emptinessBooks = this.cartService.emptinessBooks;
+    this.booksInBucket = this.cartService.booksInBucket;
   }
 
   addItem(name: IBook): void {
@@ -27,10 +31,15 @@ export class ProductComponent implements OnInit {
   }
 
   onAddToCart(item: IBook): void {
-    this.list.push(this.cartService.publishData(item));
+    this.cartService.publishData(item);
+    this.emptinessBooks = this.cartService.isEmptyCart();
   }
 
   addDescription(data: IBook): void {
     alert(data.description);
+  }
+  public isEmptyCart() {
+    this.emptinessBooks = this.cartService.isEmptyCart();
+    this.toggleEmptinessBooks = !this.toggleEmptinessBooks;
   }
 }
