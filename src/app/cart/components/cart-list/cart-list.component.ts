@@ -51,6 +51,6 @@ export class CartListComponent implements OnInit {
     this.totalCost = this.cartService.totalCost;
   }
   removeAllProducts() {
-      this.books.splice(0, this.books.length);
+    this.cartService.removeAllProducts();
   }
 }

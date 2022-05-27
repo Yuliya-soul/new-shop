@@ -78,4 +78,12 @@ export class CartService {
       return (this.emptinessBooks = false);
     }
   }
+  public removeAllProducts(): void {
+    this.totalCost = 0;
+    this.totalQuantity = 0;
+    this.booksInBucket.forEach((element) => {
+      element.quantity = 0;
+    });
+    this.booksInBucket.splice(0, this.booksInBucket.length);
+  }
 }
